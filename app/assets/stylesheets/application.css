@@ -13,3 +13,22 @@
  *= require_tree .
  *= require_self
  */
+
+
+
+/*.navbar-expand-lg .navbar-nav .nav-link{*/
+/*  padding-right: 0.5rem;*/
+/*  padding-left: 0.5rem;*/
+/*}*/
+
+
+/*.navbar-brand{*/
+/*  color: white;*/
+/*}*/
+
+
+/*.fas fa-home::before {*/
+/*  content: '\f015';*/
+/*  font-family: "Font Awesome 5 Free";*/
+/*}*/
+

@@ -1,0 +1,58 @@
+<!--<h1>Books#show</h1>-->
+<p>Find me in app/views/books/show.html.erb</p>
+
+<main>
+  <!--エラーorフラッシュメッセージ-->
+  <div class="container">
+    <div class="row">
+      <div class="col-md-3">
+            <!--User infoとNew bookの部分-->
+            <%= render 'list', book: @book, user: @book_image.user %>
+      </div>
+      
+      <div class="col-md-8 offset-md-1">
+        <h2>Book detail</h2>
+         
+         <table class="table">
+          <tbody>
+          
+            <tr>
+              <td>
+                <!--画像と名前リンク(リンク先は/users/id番号)-->
+                
+                <%= image_tag @book_image.user.get_profile_image(100,100) %>
+                <%= link_to @book_image.user.name, user_path(@book_image.user.id) %>
+              </td>
+              
+              <td>
+                 <!--titleリンク(リンク先は/books/id番号で変わらない)-->
+                <%= link_to @book_image.title, book_path(@book_image.id) %>
+              </td>
+              
+              <td>
+                <!--body-->
+                <%= @book_image.body %>
+              </td>
+              
+              <td>
+                <!--Editボタン-->
+                <% if @book_image.user == current_user %>
+                 <%= link_to "Edit", edit_book_path(@book_image), class: "btn btn-sm btn-success" %>
+                <% end %>
+              </td>
+              
+              <td>
+                <!--Destroyボタン-->
+                <% if @book_image.user == current_user %>
+                　<%= link_to "Destroy", book_path(@book_image), method: :delete,"data-confirm" => "本当に削除しますか？", class: "btn btn-sm btn-danger" %>
+                <% end %>
+              </td>
+              
+            </tr>
+          </tbody>
+         </table>
+         
+      </div>
+    </div>
+  </div>
+</main>

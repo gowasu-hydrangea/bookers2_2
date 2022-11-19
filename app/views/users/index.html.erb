@@ -1,0 +1,48 @@
+<!--<h1>Users#index</h1>-->
+<!--<p>Find me in app/views/users/index.html.erb</p>-->
+
+<main>
+  <!--エラーorフラッシュメッセージの表示部分-->
+  <div class="container px-5 px-sm-0">
+    <div class="row">
+      
+      <div class="col-md-3">
+        <!--User infoとNew bookの部分-->
+        <%= render 'books/list', book: @book, user: @user %>
+      </div>
+      
+      <div class="col-md-8 offset-md-1">
+        <h2>Users</h2>
+         <table class="table">
+           <thead>
+             <tr>
+               <th>image</th>
+               <th>name</th>
+               <th colspan="3"></th>
+             </tr>
+           </thead>
+           <tbody>
+             <!--ユーザーの一覧表示部分-->
+             <% @users.each do |user| %>
+             <tr>
+               <td>
+                 <!--プロフィール画像-->
+                 <%= image_tag user.get_profile_image(80,80) %>
+               </td>
+               <td>
+                 <!--name-->
+                 <%= user.name %>
+               </td>
+               <td>
+                 <!--Showリンク-->
+                 <%= link_to "Show", user_path(user.id) %>
+               </td>
+             </tr>
+             <% end %>
+           </tbody>
+         </table>
+      </div>
+      
+    </div>
+  </div>
+</main>

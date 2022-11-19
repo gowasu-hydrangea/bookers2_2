@@ -1,16 +1,111 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Bookers22</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Bookers2_2</title>
+    <!--ア・２＞24章-->
+    <!--FontAwesomeの導入にて書き換え-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+    
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
   </head>
 
   <body>
+    <header>
+        
+      <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+       <div class="container">
+          <!--Booksリンク-->
+          <%= link_to root_path, class:"nav-link text-light" do %>
+           Bookers
+          <% end %>
+         
+         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
+            <% if user_signed_in? %>
+            
+            <!--ログイン時-->
+            
+            <!--リンク先が/user/id番号のログインユーザーの詳細画面-->
+            <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+            <i class="fas fa-home"></i>Home
+            <% end %>
+            
+            <!--リンク先が/usersのユーザーの一覧画面-->
+            <%= link_to users_path, class:"nav-link text-light" do %>
+            <i class="fas fa-users"></i>Users
+            <% end %>
+            
+            <!--リンク先が/booksの本の一覧画面-->
+            <%= link_to books_path, class:"nav-link text-light" do %>
+            <i class="fas fa-book-open"></i>Books
+            <% end %>
+            
+             
+             <%= link_to destroy_user_session_path, method: :delete, class: "nav-link text-light" do %>
+             <i class="fas fa-sign-out-alt"></i>Log out
+             <% end %>
+             
+             
+          <% else %>
+          
+           <li>
+                <!--リンク先がトップ画面-->
+                <%= link_to root_path, class:"nav-link text-light" do %>
+                <i class="fas fa-home"></i>Home
+                <% end %>
+           </li>
+           
+           <li>
+               <!--リンク先がAboutページ(/home/about)-->
+               <%= link_to home_about_path, class:"nav-link text-light" do %>
+               <i class="fas fa-link"></i>About
+               <% end %>
+           </li>
+           
+           <li>
+               <%= link_to new_user_registration_path, class:"nav-link text-light" do %>
+               <i class="fas fa-user-plus"></i>Sign up
+               <% end %>
+           </li>
+           
+           <li>
+              <%= link_to new_user_session_path, class:"nav-link text-light" do %>
+              <i class="fas fa-sign-in-alt"></i>Log in
+              <% end %>
+           </li>
+           
+          <% end %>
+          </ul>
+          
+         </div>
+       </div>
+      </nav>
+    </header>
+    
+    <!--A39-->
+    <!--ユーザーログインが成功した時-->
+    <p class="notice"><%= notice %></p>
+    
+    <!--<p class="alert"><%= alert %></p>-->
+    
     <%= yield %>
+    
+    <!--<%= flash[:success] %>-->
+    
+    <footer>
+     <div class="container mt-5">
+  	  <div class="row">
+    	<div class="mx-auto">
+    		<p>CopyRight Infratop.inc</p>
+    	</div>
+      </div>
+     </div>
+    </footer>
+    
   </body>
 </html>
