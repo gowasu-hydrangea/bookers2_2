@@ -22,7 +22,10 @@ class User < ApplicationRecord
   
   # A48
   # ア・２＞21章＞バリデーションを設定する
-  validates :name, presence: true
-  validates :introduction, presence: true
-  validates :profile_image, presence: true
+  validates :name, 
+   length: { minimum: 2, maximum: 20 }
+  validates :name, uniqueness: true
+  validates :introduction,
+  length: { maximum: 50 }
+  # validates :profile_image, presence: true
 end

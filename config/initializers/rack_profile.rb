@@ -1,1 +1,1 @@
-Rack::MiniProfiler.config.start_hidden = true
+# Rack::MiniMime.config.start_hidden = true

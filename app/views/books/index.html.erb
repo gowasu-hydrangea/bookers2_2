@@ -1,9 +1,9 @@
 <!--<h1>Books#index</h1>-->
-<p>Find me in app/views/books/index.html.erb</p>
+<!--<p>Find me in app/views/books/index.html.erb</p>-->
 
   <div class="container">
   <% if @book.errors.any? %>
-  <%= @book.errors.count %>件のエラーが発生しました
+  <%= @book.errors.count %>error prohibited this obj from being saved:
   <ul>
     <% @book.errors.full_messages.each do |message| %>
       <li><%= message %></li>
@@ -14,6 +14,7 @@
           <div class="col-md-3">
             
             <!--User infoとNew bookの部分-->
+            <!--部分テンプレートを呼び出す-->
             <%= render 'list', book: @book, user: @user %>
               
           </div>
@@ -38,14 +39,14 @@
                 <tr>
                   <td>
                     <!--投稿したユーザーのプロフィール画像-->
-                    <%= link_to user_path(current_user.id), class:"nav-link text-light" do %>
+                    <%= link_to user_path(book.id), class:"nav-link text-light" do %>
                     <%= image_tag book.user.get_profile_image(100,100) %>
                     <% end %>
                   </td>
                   
                   <td>
                     <!--遷移先が/books/id番号-->
-                    <%= link_to book_path(book.id), class:"nav-link text-dark" do %>
+                    <%= link_to book_path(book.id) do %>
                     <%= book.title %>
                     <% end %>
                   </td>

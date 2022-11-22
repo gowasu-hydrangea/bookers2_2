@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
    # A46
    # ア・２＞21章＞権限の設定をする
-   before_action :authenticate_user!, except: [:top]
+   before_action :authenticate_user!, except: [:top, :about]
    before_action :configure_permitted_parameters, if: :devise_controller?
 
   # A25
@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
   protected
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
+    devise_parameter_sanitizer.permit(:sign_up, keys: [:name, :email])
   end
   
 end
